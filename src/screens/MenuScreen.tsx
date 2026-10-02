@@ -1,13 +1,13 @@
 import React, { useState, useMemo } from 'react';
 import { View, TextInput, FlatList, StyleSheet } from 'react-native';
-import { DISHES } from '../data/mockData';
+import { Category, DISHES } from '../data/mockData';
 import DishCard from '../components/DishCard';
 import CategoryPills from '../components/CategoryPills';
 import { useCart } from '../context/CartContext';
 
 export default function MenuScreen({ navigation }: any) {
   const [query, setQuery] = useState('');
-  const [cat, setCat] = useState('All');
+  const [cat, setCat] = useState<Category>('All');
   const { addItem } = useCart();
 
   const filtered = useMemo(

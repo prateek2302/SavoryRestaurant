@@ -1,29 +1,31 @@
 import React from 'react';
 import { ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { CATEGORIES } from '../data/mockData';
+import { CATEGORIES, Category } from '../data/mockData';
 
 export default function CategoryPills({
   selected,
   onSelect,
 }: {
-  selected: string;
-  onSelect: (c: any) => void;
+  selected: Category;
+  onSelect: (category: Category) => void;
 }) {
   return (
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
       style={styles.scroll}
-      contentContainerStyle={{ paddingHorizontal: 16, gap: 8 }}
+      contentContainerStyle={styles.content}
     >
-      {CATEGORIES.map((cat: string) => (
+      {CATEGORIES.map(category => (
         <TouchableOpacity
-          key={cat}
-          onPress={() => onSelect(cat)}
-          style={[styles.pill, selected === cat && styles.active]}
+          key={category}
+          onPress={() => onSelect(category)}
+          style={[styles.pill, selected === category && styles.active]}
         >
-          <Text style={[styles.text, selected === cat && styles.activeText]}>
-            {cat}
+          <Text
+            style={[styles.text, selected === category && styles.activeText]}
+          >
+            {category}
           </Text>
         </TouchableOpacity>
       ))}
@@ -31,7 +33,12 @@ export default function CategoryPills({
   );
 }
 const styles = StyleSheet.create({
-  scroll: { paddingVertical: 12 },
+  scroll: { height: 56, flexGrow: 0 },
+  content: {
+    paddingHorizontal: 16,
+    gap: 8,
+    alignItems: 'center',
+  },
   pill: {
     paddingHorizontal: 18,
     paddingVertical: 10,
@@ -39,8 +46,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderWidth: 1,
     borderColor: '#eee',
+    justifyContent: 'center',
   },
   active: { backgroundColor: '#111', borderColor: '#111' },
-  text: { color: '#111', fontWeight: '600', fontSize: 13 },
+  text: { color: '#111', fontWeight: '600', fontSize: 14, lineHeight: 18 },
   activeText: { color: 'white' },
 });

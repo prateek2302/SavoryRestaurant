@@ -4,15 +4,14 @@ import {
   Text,
   ScrollView,
   StyleSheet,
-  TouchableOpacity,
 } from 'react-native';
 import { useCart } from '../context/CartContext';
-import { DISHES } from '../data/mockData';
+import { Category, DISHES } from '../data/mockData';
 import DishCard from '../components/DishCard';
 import CategoryPills from '../components/CategoryPills';
 
 export default function HomeScreen({ navigation }: any) {
-  const [category, setCategory] = useState('All');
+  const [category, setCategory] = useState<Category>('All');
   const { addItem } = useCart();
   const featured = DISHES.filter(d => d.featured);
   const filtered =

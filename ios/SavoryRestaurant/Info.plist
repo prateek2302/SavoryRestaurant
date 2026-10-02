@@ -61,12 +61,9 @@
 		<string>arm64</string>
 	</array>
 	<key>UIAppFonts</key>
-<array>
-    <string>Ionicons.ttf</string>
-    <string>MaterialIcons.ttf</string>
-    <string>FontAwesome.ttf</string>
-    <string>Feather.ttf</string>
-</array>
+	<array>
+		<string>Ionicons.ttf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
